@@ -1,0 +1,15 @@
+6:01:09 PM - /about
+6:01:10 PM - /favicon.ico
+6:01:22 PM - /contact
+6:01:26 PM - /favicon.ico
+6:02:40 PM - /about - [object Object]
+6:02:40 PM - /favicon.ico - [object Object]
+6:02:47 PM - /contact - [object Object]
+6:02:49 PM - /favicon.ico - [object Object]
+6:03:01 PM - /about - [object Object]
+6:03:02 PM - /favicon.ico - [object Object]
+6:03:36 PM - /contact - /contact
+6:03:37 PM - /favicon.ico - /favicon.ico
+6:04:10 PM - /about - /about
+6:04:26 PM - /about?search_query=Hello%20World - /about?search_query=Hello%20World
+6:04:26 PM - /favicon.ico - /favicon.ico

@@ -1,0 +1,24 @@
+{
+  "name": "node-js-by-piyush-garg",
+  "version": "1.0.0",
+  "main": "1_Intro_To_NodeJS.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./5_What_Is_URL.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavishaya-khandelwal-dianapps/Node-Js-By-Piyush-Garg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhavishaya-khandelwal-dianapps/Node-Js-By-Piyush-Garg/issues"
+  },
+  "homepage": "https://github.com/bhavishaya-khandelwal-dianapps/Node-Js-By-Piyush-Garg#readme",
+  "description": "",
+  "dependencies": {
+    "nodemon": "^3.1.9",
+    "url": "^0.11.4"
+  }
+}
