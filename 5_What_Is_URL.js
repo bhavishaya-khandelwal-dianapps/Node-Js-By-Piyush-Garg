@@ -7,8 +7,8 @@ const url = require("url");
 
 const server = http.createServer((req, res) => {
     let date = new Date();
-    let myUrl = url.parse(req.url);
-    let log = `${date.toLocaleTimeString()} - ${req.url} - ${myUrl.path}\n`;
+    let myUrl = url.parse(req.url, true);
+    let log = `${date.toLocaleTimeString()} - ${req.url} - ${myUrl.pathname} - ${req.method}\n`;
     console.log(myUrl);
     fs.appendFile("./log.txt", log, "utf-8", (err) => {
         if(err) {
@@ -24,7 +24,8 @@ const server = http.createServer((req, res) => {
             break;
         
         case "/about":
-            res.end("About Page");
+            let username = myUrl.query.myname;
+            res.end(`About Page ${username}`);
             break;
         
         case "/contact":
