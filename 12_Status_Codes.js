@@ -1,0 +1,82 @@
+//* All about HTTP Headers ->
+const express = require("express");
+const users = require("./MOCK_DATA.json");
+const fs = require("fs");
+const path = require("path");
+
+const app = express();
+const PORT = 7000;
+
+
+//* Middleware - Plugin
+app.use(express.urlencoded({ extended : false }));
+
+
+//* To list all the users
+app.get("/users", (req, res) => {
+    const html = `
+        <ul>
+            ${users.map((user) => {
+                return (`<li> ${user.first_name} </li>`);
+            })}
+        </ul>
+    `;
+    res.send(html);
+});
+
+
+//* To list the data in json format
+app.get("/api/users", (req, res) => {
+    console.log(req.headers);
+    res.setHeader("X-myName", "Bhavishaya Khandelwal"); //* This is our custom header
+    //todo --- Always add X to custom headers 
+    return res.json(users);
+});
+
+
+app.post("/api/users", (req, res) => {
+    //? Create a new user 
+
+    const body = req.body;  //* Whatever data we get from frontend, we see that data in this body. 
+    console.log("Body =", body);
+    if(!body || !body.first_name || !body.last_name || !body.email || !body.gender || !body.job_title) {
+        return res.status(400).json({ msg : "All fields are required" });
+    }
+
+    //* Pushing the data in our JSON data(MOCK_DATA.json)
+    users.push({...body, id : users.length + 1});
+    let filePath = path.join(__dirname, "MOCK_DATA.json");
+    fs.writeFile(filePath, JSON.stringify(users), (err, data) => {
+        return res.status(201).json({ status : "success", id : users.length });
+    });
+    // return res.json({ status : "pending" });
+});
+
+
+//* Dynamic Path Parameters 
+//? /api/users/:id
+app.route("/api/users/:id")
+.get((req, res) => {
+    const id = Number(req.params.id);
+    const user = users.filter((u) => {
+        return u.id == id;
+    });
+    if(!user) {
+        return res.status(404).json({ error : "User not found" });
+    }
+    return res.send(user);
+})
+.patch((req, res) => {
+    //! Edit user with id 
+    return res.json({ status : "pending" });
+})
+.delete((req, res) => {
+    //? Delete the user with id 
+    return res.json({ status : "pending" });
+})
+
+
+
+app.listen(PORT, () => {
+    console.log(`Server is starting on PORT number ${PORT}`);
+});

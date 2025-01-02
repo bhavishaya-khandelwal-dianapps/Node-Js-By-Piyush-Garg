@@ -2,10 +2,9 @@
   "name": "node-js-by-piyush-garg",
   "version": "1.0.0",
   "main": "1_Intro_To_NodeJS.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch ./9_REST_API.js"
+    "start": "node --watch ./12_Status_Codes.js"
   },
   "repository": {
     "type": "git",
